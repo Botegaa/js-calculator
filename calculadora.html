@@ -18,8 +18,8 @@
     <!-- calculadora -->
     <div class="calculator">
         <div class="upper-section">
-            <p id="history"></p>
-            <p class="displayNum" id="result"></p>
+            <p class= "texts" id="history"></p>
+            <p class="text" id="result"></p>
         </div>
         <div class="buttons">
             <!-- primeira fileira -->
@@ -65,7 +65,6 @@
 
         </div>
     </div>
-    <script src="script.js"></script>
 
     <script>
          var hist = []
@@ -104,7 +103,8 @@
                 historyElement.innerHTML = '';
                 isHistVisible = false; 
             } else {
-                historyElement.innerHTML = hist.join('<br>');
+                var lastFivehist = hist.slice(-5); 
+                historyElement.innerHTML = lastFivehist.join('<br>');
                 isHistVisible = true; 
             }
 }
@@ -115,6 +115,7 @@
                 var prevNum = parseFloat(display);
                 var percentageNum = prevNum / 100; 
                 document.getElementById('result').innerHTML = percentageNum;
+                
     }
 }
 
@@ -124,6 +125,7 @@
                 var prevNum = parseFloat(display);
                 var squaredNum = prevNum ** 2;
                 document.getElementById('result').innerHTML = squaredNum; 
+                hist.push(prevNum + '²' + ' = ' + squaredNum)
     }
 
 }
@@ -133,10 +135,33 @@
 
             if (display.length > 0 && !isNaN(display)) {
                 var prevNum = parseFloat(display);
-                var sqrtNum = Math.sqrt(currentValue);
+                var sqrtNum = Math.sqrt(prevNum);
                 document.getElementById('result').innerHTML = sqrtNum;
+                hist.push('√' + prevNum + ' = ' + sqrtNum)
     }
 }
+
+const body = document.querySelector('body');
+const calculator = document.querySelector('.calculator');
+const buttons = document.querySelectorAll('.button');
+const toggleCheckbox = document.getElementById('toggle');
+const svgs = document.querySelectorAll('.svg');
+const texts = document.querySelectorAll('.text')
+toggleCheckbox.addEventListener('change', () => {
+  if (toggleCheckbox.checked) {
+    body.classList.add('dark-mode');
+    calculator.classList.add('dark-mode');
+    buttons.forEach(button => button.classList.add('dark-mode'));
+    svgs.forEach(svg => svg.classList.add('dark-mode'));
+    texts.forEach(text => text.classList.add('dark-mode'));
+  } else {5
+    body.classList.remove('dark-mode');
+    calculator.classList.remove('dark-mode');
+    buttons.forEach(button => button.classList.remove('dark-mode'));
+    svgs.forEach(svg => svg.classList.remove('dark-mode'));
+    texts.forEach(text => text.classList.remove('dark-mode'));
+  }
+});
     </script>
 </body>
 
