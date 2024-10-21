@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    background-color: rgba(63, 125, 142, 0.6);
+    font-family: 'Quicksand';
+}
+
+body.dark-mode {
+    background-color: rgba(1, 45, 58, 0.925);
+}
+
+.container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-button{
+    background-color: #d2d2d2;
+    width: 100px;
+    height: 50px;
+    border-radius: 200px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s;
+}
+.toggle-button::before{
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 200px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+input:checked + .toggle-button{
+    background-color: #101f24;
+}
+input:checked + .toggle-button::before{
+    transform: translateX(50px);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.calculator {
+    width: 450px;
+    height: 400px;
+    margin: 30px auto;
+    padding: 30px 10px 10px 10px;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 30px 60px #2e3a3a3b;
+}
+
+.calculator.dark-mode {
+    background-color: #1e1e1e;
+}
+
+
+#display {
+    width: 85%;
+    height: 20%;
+    text-align: end;
+    font-size: 28px;
+    border: none;
+    margin: 0 auto 15px auto;
+    padding: 0 15px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.buttons {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    place-items: center;
+    height: 80%;    
+    box-sizing: border-box;
+}
+
+button {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    padding: 0;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Quicksand';
+    font-weight: 500;
+    font-size: 24px;
+    text-align: center;
+    line-height: 1;
+    background-color: white;
+}
+
+.button.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.svg {
+    fill: black;
+}
+
+.svg.dark-mode {
+    fill: white;
+}
+
+.history {
+    min-height: 50px;
+}
+
+.result {
+    background-color: rgba(63, 125, 142, 0.6);
+    
+}
+
+.upper-section {
+    height:20%;
+}
+
+.special {
+    background-color: rgba(63, 125, 142, 0.6);
+}
